@@ -49,6 +49,9 @@ function Board({ xIsNext, squares, onPlay }) {
   return (
     <>
       <div className="status">{status}</div>
+      <div className="status">{`Você está no movimento ${
+        squares.filter((item) => item === "X" || item === "O").length + 1
+      }`}</div>
       {rows}
     </>
   );
@@ -57,6 +60,7 @@ function Board({ xIsNext, squares, onPlay }) {
 export default function Game() {
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
+  const [reverse, setReverse] = useState(false)
   const xIsNext = currentMove % 2 === 0;
   const currentSquares = history[currentMove];
 
@@ -69,7 +73,7 @@ export default function Game() {
   function jumpTo(nextMove) {
     setCurrentMove(nextMove);
   }
-
+ 
   const moves = history.map((squares, move) => {
     let description;
     if (move > 0) {
@@ -91,7 +95,9 @@ export default function Game() {
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
       <div className="game-info">
-        <ol>{moves}</ol>
+      <button onClick={() => setReverse(!reverse)}>{`inverter a ordem para ${reverse ? 'ascendente ' : 'descendente'}`}</button>
+      <br/>
+        <ol>{reverse ? moves : moves.reverse()}</ol>
       </div>
     </div>
   );
