@@ -2,8 +2,8 @@
 // código funcione corretamente?
 
 
-async callAsyncFunction (asyncFunc) {
-    const value = await asyncFunc();
+callAsyncFunction (asyncFunc) {
+    const value =  asyncFunc();
     this.setState({ value });
 }
 

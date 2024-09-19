@@ -5,10 +5,7 @@ function MyCmp(props) {
   const data = ["item1", "item2", "item3"];
   return (
     <ul>
-      {" "}
-      {data.map((item: string) => (
-        <li>{item}</li>
-      ))}{" "}
+      {data.map((item: string) => (<li>{item}</li>))}
     </ul>
   );
 }

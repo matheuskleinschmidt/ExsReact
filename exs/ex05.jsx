@@ -17,6 +17,6 @@ const MyFuncComponent = () => {
   
     useEffect(() => {
       updateCount(count + 1);
-    }, []);
+    }, []); // aqui
     return <div>{count}</div>;
   };
